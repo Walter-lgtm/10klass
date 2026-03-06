@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L & ⅂ | Алкины: Тройная связь</title>
     <style>
-        /* Стиль полностью идентичен предыдущему для сохранения экосистемы */
         body { background: #0a0f0d; color: #2ecc71; font-family: 'Times New Roman', serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 10px; }
         .card { background: #111; border: 1px solid #27ae60; padding: 25px; border-radius: 20px; box-shadow: 0 0 30px #2ecc7133; max-width: 850px; width: 95%; text-align: center; margin-bottom: 20px; box-sizing: border-box; }
         h1 { font-size: 1.6rem; text-shadow: 0 0 15px #2ecc71; margin-bottom: 10px; color: #2ecc71; }
@@ -32,7 +31,7 @@
 </head>
 <body>
     <div class="card">
-        <h1>L & ⅂ | Алкины: Непредельные УВ</h1>
+        <h1>L & ⅂ | Алкины: Тройная связь</h1>
         <p class="quote">«От карбида до Кучерова — путь великого синтеза»</p>
 
         <div class="user-info">
@@ -65,15 +64,15 @@
             </table>
         </div>
 
-        <h2>3. Именные реакции и свойства</h2>
+        <h2>3. Реакция Кучерова</h2>
         <div class="table-wrapper">
             <table>
-                <tr><th>Реакция</th><th>Катализатор</th><th>Основной продукт</th><th>Признак</th></tr>
+                <tr><th>Реагент</th><th>Катализатор</th><th>Продукт (для C₂H₂)</th><th>Класс продукта</th></tr>
                 <tr>
-                    <td><span class="formula-tag">Кучерова</span></td>
-                    <td><select id="q3_1"><option value="0">выбор...</option><option value="w">FeCl3</option><option value="1">Соли Hg2+</option><option value="w">Ni</option></select></td>
-                    <td><select id="q3_2"><option value="0">выбор...</option><option value="w">Спирт</option><option value="1">Уксусный альдегид</option><option value="w">Кислота</option></select></td>
-                    <td><select id="q3_3"><option value="0">выбор...</option><option value="w">Осадок</option><option value="w">Газ</option><option value="1">Образование карбонила</option></select></td>
+                    <td><select id="q3_1"><option value="0">выбор...</option><option value="1">Вода (H2O)</option><option value="w">Хлор</option><option value="w">Водород</option></select></td>
+                    <td><select id="q3_2"><option value="0">выбор...</option><option value="w">FeCl3</option><option value="1">Соли Hg2+</option><option value="w">Ni</option></select></td>
+                    <td><select id="q3_3"><option value="0">выбор...</option><option value="w">Этанол</option><option value="1">Ацетальдегид</option><option value="w">Уксусная кислота</option></select></td>
+                    <td><select id="q3_4"><option value="0">выбор...</option><option value="w">Спирты</option><option value="1">Альдегиды</option><option value="w">Кетоны</option></select></td>
                 </tr>
             </table>
         </div>
@@ -87,59 +86,95 @@
             <div class="check-item"><input type="checkbox" id="q4_5"> HCl</div>
         </div>
 
-        <h2>5. Применение и Особенности:</h2>
+        <h2>5. Свойства и применение:</h2>
         <div class="check-grid">
-            <div class="check-item"><input type="checkbox" id="q5_1"> Сварка металлов</div>
-            <div class="check-item"><input type="checkbox" id="q5_2"> Взрывоопасен в смеси с O₂</div>
-            <div class="check-item"><input type="checkbox" id="q5_3"> Имеет запах фиалок</div>
-            <div class="check-item"><input type="checkbox" id="q5_4"> Синтез ПВХ</div>
-            <div class="check-item"><input type="checkbox" id="q5_5"> Растворяется в масле</div>
+            <div class="check-item"><input type="checkbox" id="q5_1"> Сварка металлов (автоген)</div>
+            <div class="check-item"><input type="checkbox" id="q5_2"> Взрывоопасен в смеси с воздухом</div>
+            <div class="check-item"><input type="checkbox" id="q5_3"> Легче воздуха</div>
+            <div class="check-item"><input type="checkbox" id="q5_4"> Обесцвечивает KMnO<sub>4</sub></div>
+            <div class="check-item"><input type="checkbox" id="q5_5"> Является жидкостью</div>
         </div>
 
         <button id="btn" onclick="calculateFinal()">ЗАПУСТИТЬ РЕАКЦИЮ</button>
         <div id="result"></div>
-        <p class="footer">L & ⅂ Digital Education | Case 3: Alkynes</p>
+        <p class="footer">L & ⅂ Digital Education | Universal Science</p>
     </div>
-
     <script>
-        const GOOGLE_URL = "ttps://script.google.com/macros/s/AKfycbzwg4ujvbls2LrZUAJTBrtwoez1LLeh1UxK45ta-vDqpslPgwA1rPXP8pn6JTQHRKc/exec";
+        // ВАЖНО: Замени адрес в кавычках ниже на свою ссылку, которую ты получил в Google Apps Script
+        const GOOGLE_URL = "https://script.google.com/macros/s/AKfycbxvZmqpCZlqTwwpDXkohxWBcFskTAQsWgeF_pWbWHlYfV2imid0r0EpDs9mZZ9nt9wM/exec";
 
         async function calculateFinal() {
             const name = document.getElementById('student_name').value.trim();
-            if (!name) { alert("Представьтесь, смертный!"); return; }
+            if (!name) { 
+                alert("Представьтесь, смертный! (Введите имя и фамилию)"); 
+                return; 
+            }
 
             document.getElementById('btn').disabled = true;
             document.getElementById('btn').innerText = "СИНХРОНИЗАЦИЯ...";
 
             let score = 0;
+
+            // Блок 1: Строение (3 селекта)
             if (['q1_1','q1_2','q1_3'].every(id => document.getElementById(id).value == "1")) score++;
+
+            // Блок 2: Получение (4 селекта)
             if (['q2_1','q2_2','q2_3','q2_4'].every(id => document.getElementById(id).value == "1")) score++;
-            if (['q3_1','q3_2','q3_3'].every(id => document.getElementById(id).value == "1")) score++;
+
+            // Блок 3: Реакция Кучерова (4 селекта)
+            if (['q3_1','q3_2','q3_3','q3_4'].every(id => document.getElementById(id).value == "1")) score++;
             
-            // 4. Присоединение (Верно: 1, 3, 5)
-            let q4 = document.getElementById('q4_1').checked && document.getElementById('q4_3').checked && document.getElementById('q4_5').checked &&
+            // Блок 4: Взаимодействие (Верно: 1, 3, 5. Неверно: 2, 4)
+            let q4 = document.getElementById('q4_1').checked && 
+                     document.getElementById('q4_3').checked && 
+                     document.getElementById('q4_5').checked &&
                      !['q4_2','q4_4'].some(id => document.getElementById(id).checked);
             if (q4) score++;
 
-            // 5. Применение (Верно: 1, 2, 4)
-            let q5 = document.getElementById('q5_1').checked && document.getElementById('q5_2').checked && document.getElementById('q5_4').checked &&
+            // Блок 5: Свойства (Верно: 1, 2, 4. Неверно: 3, 5)
+            // Примечание: ацетилен чуть тяжелее воздуха (26 против 29), поэтому 3 - ложь.
+            let q5 = document.getElementById('q5_1').checked && 
+                     document.getElementById('q5_2').checked && 
+                     document.getElementById('q5_4').checked &&
                      !['q5_3','q5_5'].some(id => document.getElementById(id).checked);
             if (q5) score++;
 
-            let rank = score >= 4 ? "Мастер-химик" : score === 3 ? "Лаборант" : "Новичок";
+            // Расчет школьной оценки (шкала 1-5)
+            let grade = "2";
+            if (score === 5) grade = "5";
+            else if (score === 4) grade = "4";
+            else if (score === 3) grade = "3";
             
+            let rank = score >= 5 ? "Мастер-химик" : score >= 3 ? "Практик" : "Ученик";
+
             try {
+                // Отправка данных в Google Таблицу
                 await fetch(GOOGLE_URL, {
                     method: "POST",
                     mode: "no-cors",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name: name, score: score, rank: rank })
+                    body: JSON.stringify({ 
+                        name: name, 
+                        score: score, 
+                        grade: grade,
+                        rank: rank 
+                    })
                 });
-                document.getElementById('result').innerHTML = `ТОЧНОСТЬ: ${score} из 5<br>ДАННЫЕ ОТПРАВЛЕНЫ В ГИМНАЗИЮ №1.`;
+
+                document.getElementById('result').innerHTML = 
+                    `<span style="color: #2ecc71">РЕАКЦИЯ ЗАВЕРШЕНА!</span><br>` +
+                    `Точность: ${score} из 5<br>` +
+                    `ВАША ОЦЕНКА: <span style="font-size: 1.5rem; color: #fff;">${grade}</span><br>` +
+                    `<small>Данные синхронизированы с журналом Гимназии №1</small>`;
+
             } catch (e) {
-                document.getElementById('result').innerHTML = `ОШИБКА РЕЗОНАНСА. Балл: ${score}`;
+                document.getElementById('result').innerHTML = 
+                    `<span style="color: #e74c3c">ОШИБКА СВЯЗИ.</span><br>` +
+                    `Твой результат: ${score} из 5 (Оценка: ${grade}).<br>` +
+                    `Покажи этот экран учителю!`;
             }
-            document.getElementById('btn').innerText = "РЕАКЦИЯ ЗАВЕРШЕНА";
+
+            document.getElementById('btn').innerText = "ДАННЫЕ ОТПРАВЛЕНЫ";
         }
     </script>
 </body>
