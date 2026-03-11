@@ -131,13 +131,14 @@
                      !['q4_2','q4_4'].some(id => document.getElementById(id).checked);
             if (q4) score++;
 
-            // Блок 5: Свойства (Верно: 1, 2, 4. Неверно: 3, 5)
-            // Примечание: ацетилен чуть тяжелее воздуха (26 против 29), поэтому 3 - ложь.
-            let q5 = document.getElementById('q5_1').checked && 
-                     document.getElementById('q5_2').checked && 
-                     document.getElementById('q5_4').checked &&
-                     !['q5_3','q5_5'].some(id => document.getElementById(id).checked);
-            if (q5) score++;
+            // Блок 5: Свойства (Теперь Верно: 1, 2, 3, 4. Неверно: 5)
+// Ацетилен (26 г/моль) легче воздуха (29 г/моль) — теперь это ПРАВДА!
+let q5 = document.getElementById('q5_1').checked && 
+         document.getElementById('q5_2').checked && 
+         document.getElementById('q5_3').checked && // Добавили проверку 3-го чекбокса
+         document.getElementById('q5_4').checked &&
+         !document.getElementById('q5_5').checked; // Только 5-й должен быть пустым
+if (q5) score++;
 
             // Расчет школьной оценки (шкала 1-5)
             let grade = "2";
